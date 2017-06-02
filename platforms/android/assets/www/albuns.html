@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body class="blue lighten-5">
+      <!--Import jQuery before materialize.js-->
+      <ul id="slide-out" class="side-nav">
+        <li><div class="userView">
+          <div class="background">
+            <img src="img/paisagem.jpg">
+          </div>
+          <a href="#!user"><img class="circle" src="img/pessoa.jpg"></a>
+          <a href="#!name"><span class="white-text name">John Doe</span></a>
+          <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+        </div></li>
+        <li><a href="principal.html"><i class="material-icons">stars</i>Principal</a></li>
+        <li><a href="recados.html"><i class="material-icons">textsms</i>Recados</a></li>
+        <li><a class="waves-effect" href="albuns.html"><i class="material-icons">perm_media</i>Albuns</a></li>
+        <li><a class="waves-effect" href="eventos.html"><i class="material-icons">today</i>Eventos</a></li>
+        <li><a class="waves-effect" href="configuracoes.html"><i class="material-icons">settings</i>Configurações</a></li>
+        <li><a class="waves-effect" href="estoque.html"><i class="material-icons">shopping_cart</i>Estoque</a></li>
+        <li><a class="waves-effect" href="index.html"><i class="material-icons">power_settings_new</i>Logout</a></li>
+      </ul>
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper blue lighten-3">
+            <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+            <a href="#" class="brand-logo">Albuns</a>
+          </div>
+        </nav>
+      </div>
+      <div class="container">
+        <br>
+        <div class="row">
+          <div class="col s12 m7">
+            <div class="card">
+              <div class="card-image">
+                <img src="img/paisagem.jpg">
+                <span class="card-title">Fotos de férias</span>
+              </div>
+              <div class="card-action">
+                <a href="album.html">Entrar</a>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m7">
+            <div class="card">
+              <div class="card-image">
+                <img src="img/paisagem.jpg">
+                <span class="card-title">Fotos de creche</span>
+              </div>
+              <div class="card-action">
+                <a href="album.html">Entrar</a>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m7">
+            <div class="card">
+              <div class="card-image">
+                <img src="img/paisagem.jpg">
+                <span class="card-title">Fotos com o papai</span>
+              </div>
+              <div class="card-action">
+                <a href="album.html">Entrar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fixed-action-btn">
+          <a class="btn-floating btn-large red">
+            <i class="large material-icons">menu</i>
+          </a>
+          <ul>
+            <li><a class="btn-floating green waves-effect waves-light btn" href="#modal1"><i class="material-icons">mode_edit</i></a></li>
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+              <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>A bunch of text</p>
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+              </div>
+            </div>
+            <li><a class="btn-floating blue"><i class="material-icons">delete</i></a></li>
+          </ul>
+        </div>
+      </div>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript">
+        $( document ).ready(function(){
+          $(".button-collapse").sideNav();
+          $('.collapsible').collapsible();
+        })
+      </script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+    </body>
+  </html>
