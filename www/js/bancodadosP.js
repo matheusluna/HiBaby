@@ -15,9 +15,7 @@
 	//const email = document.getElementById('email');
 	
 	//Create references
-	//const dbRefObjec = firebase.database().ref().child('');
-	
-	//dbRefObjec.on('value', snap => console.log(snap.val()));
+
 	// Get elements
 	const btnLogout = document.getElementById('buttonLogout');
 	
@@ -114,6 +112,7 @@
 			//console.log(res);
 			console.log("Esta logado");
 		}else{
+			//window.location.replace("index.html");
 			console.log('Nao logando');
 		}
 	});
