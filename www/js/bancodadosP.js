@@ -1,14 +1,15 @@
 (function(){
 	// Initialize Firebase
 	var config = {
-		apiKey: "AIzaSyCHXij2g0UQRjW1gWew6HZafck96RLFxP8",
-		authDomain: "hibaby-c0200.firebaseapp.com",
-		databaseURL: "https://hibaby-c0200.firebaseio.com",
-		projectId: "hibaby-c0200",
-		storageBucket: "hibaby-c0200.appspot.com",
-		messagingSenderId: "154530316388"
-	};
-	firebase.initializeApp(config);
+    apiKey: "AIzaSyDTgFfL8QZU6kA1q9Jc9I4Lu24CuaQiJEs",
+    authDomain: "hibaby-1bebf.firebaseapp.com",
+    databaseURL: "https://hibaby-1bebf.firebaseio.com",
+    projectId: "hibaby-1bebf",
+    storageBucket: "hibaby-1bebf.appspot.com",
+    messagingSenderId: "9227781946"
+  };
+  firebase.initializeApp(config);
+
 	// Get elements
 	//const img = document.getElementById('img');
 	//const name = document.getElementById('name');
@@ -95,6 +96,8 @@
 					document.getElementById("name").innerHTML = snap.val().name;
 					document.getElementById("email").innerHTML = snap.val().email;
 					document.getElementById("img").src = snap.val().img;
+				}else{
+					alert("Dados incorretos!")
 				}
 			});
 			
