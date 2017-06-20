@@ -1,14 +1,15 @@
 (function(){
 	// Initialize Firebase
 	var config = {
-		apiKey: "AIzaSyCHXij2g0UQRjW1gWew6HZafck96RLFxP8",
-		authDomain: "hibaby-c0200.firebaseapp.com",
-		databaseURL: "https://hibaby-c0200.firebaseio.com",
-		projectId: "hibaby-c0200",
-		storageBucket: "hibaby-c0200.appspot.com",
-		messagingSenderId: "154530316388"
+		apiKey: "AIzaSyDTgFfL8QZU6kA1q9Jc9I4Lu24CuaQiJEs",
+		authDomain: "hibaby-1bebf.firebaseapp.com",
+		databaseURL: "https://hibaby-1bebf.firebaseio.com",
+		projectId: "hibaby-1bebf",
+		storageBucket: "hibaby-1bebf.appspot.com",
+		messagingSenderId: "9227781946"
 	};
 	firebase.initializeApp(config);
+
 	
 	// Get elements
 	const Email = document.getElementById('email');
@@ -20,15 +21,17 @@
 		const email = Email.value;
 		const pass = Password.value;
 		const auth = firebase.auth();
-		/* Sign in
+
 		auth.signInWithEmailAndPassword(email, pass).catch(function(error) {
 			// Handle Errors here.
-			var errorCode = error.code;
-			var errorMessage = error.message;
-			console.log("deu erro");
+			if (email == ""||pass == "") {
+				alert("Preencha os dados vazios!")
+			}else{
+				alert("Dados incorretos!")
+			}
 			// ...
-		});*/
-		const promise = auth.signInWithEmailAndPassword(email, pass);
+		});
+		//const promise = auth.signInWithEmailAndPassword(email, pass);
 		/* Add a realtime listener
 		firebase.auth().onAuthStateChanged(firebaseUser =>{
 			if(firebaseUser){

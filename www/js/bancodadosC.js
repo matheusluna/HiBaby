@@ -33,6 +33,7 @@
 				console.log(firebaseUser);
 				
 				dbRefList.on('child_added', snap => {
+
 					
 					if(firebaseUser.email == snap.val().email){
 						/*
@@ -73,10 +74,20 @@
 								firebase.auth().signOut();
 								window.location.replace("index.html");
 							}, function(error) {
-								// An error happened.
+								if(document.getElementById("passC").value == ""){
+									alert("Preencha as campos vazios!")
+								}else{
+									alert("Dados incorretos")
+								}
+								
 							});
 						}, function(error) {
 							// An error happened.
+							if(document.getElementById("emailC").value == "" || document.getElementById("passC").value == "" ){
+									alert("Preencha as campos vazios!")
+							}else{
+									alert("Dados incorretos")
+							}
 						});
 						/*
 						user.updatePassword(novoPass.value).then(function() {
