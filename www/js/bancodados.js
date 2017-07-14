@@ -9,19 +9,21 @@
 		messagingSenderId: "9227781946"
 	};
 	firebase.initializeApp(config);
-
 	
-	// Get elements
+	// Pego os elementos do html email, senha e do butao logar.
 	const Email = document.getElementById('email');
 	const Password = document.getElementById('password');
 	const btnSignIn = document.getElementById('buttonSignIn');
-	// Add login event
+	
+	// Funçao de login. quando ele de um click no butao login vai ativar essa funçao, que serve para logar ele no firebase.
 	btnSignIn.addEventListener('click', e => {
-		// Get email and pass
+		
+		// Pego os valores de email e pass, e o auth diz todos os metodos de autenticaçao do firebase.
 		const email = Email.value;
 		const pass = Password.value;
 		const auth = firebase.auth();
-
+		
+		//o metodo signInWithEmailAndPassword serve para fazer o login no firebase.
 		auth.signInWithEmailAndPassword(email, pass).catch(function(error) {
 			// Handle Errors here.
 			if (email == ""||pass == "") {
@@ -31,39 +33,17 @@
 			}
 			// ...
 		});
-		//const promise = auth.signInWithEmailAndPassword(email, pass);
-		/* Add a realtime listener
-		firebase.auth().onAuthStateChanged(firebaseUser =>{
-			if(firebaseUser){
-				window.location.replace("principal.html");
-				console.log("Esta logado");
-			}else{
-				promise.catch(e => console.log(e.message));
-				console.log('Nao logando');
-			}
-		});*/
-		//if(promise.W == 3){
-			//console.log("deu errado");
-		//}else{
-			//console.log("deu certo");
-		//}
-		//promise.catch(e => console.log(e.message));
-		//console.log("nao deu erro");
-		//console.log(promise);
-		//window.location.replace("principal.html");
-		//promise.try(e => window.location.replace("principal.html"));
-		//promise.catch(e => console.log(e.message));
 		
 	});
 	
-	// Add a realtime listener
+	// Add a realtime listener. Esse metodo onAuthStateChanged e para saber em tempo real si o usuario esta logado ou nao.
 	firebase.auth().onAuthStateChanged(firebaseUser =>{
 		if(firebaseUser){
-			console.log(firebaseUser);
+			
+			//Se ele tiver logado com sucesso ele e mandado para a pagina principal.
 			window.location.replace("principal.html");
-			console.log("Esta logado");
 		}else{
-			console.log('Nao logando');
+		
 		}
 	});
 	

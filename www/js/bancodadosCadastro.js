@@ -48,22 +48,4 @@
 			}
 		});
 	});
-	/*
-	const novo = {
-		name : novoName.value,
-		email : novoEmail.value,
-		pass : novoPass.value,
-		cor : cor,
-		img : img.img
-	}
-			
-			var updates = {};
-			
-			updates['user/' + snap.key] = novo;
-			
-			firebase.database().ref().update(updates);
-			
-			firebase.auth().signOut();
-			window.location.replace("index.html");
-	*/
 }());
