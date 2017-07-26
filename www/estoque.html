@@ -27,11 +27,11 @@
 			<li><a class="waves-effect" href="eventos.html"><i class="material-icons">today</i>Eventos</a></li>
 			<li><a class="waves-effect" href="configuracoes.html"><i class="material-icons">settings</i>Configurações</a></li>
 			<li><a class="waves-effect" href="estoque.html"><i class="material-icons">shopping_cart</i>Estoque</a></li>
-			<li><a class="waves-effect" id="buttonLogout"><i class="material-icons">power_settings_new</i>Logout</a></li>
+			<li><a class="waves-effect" id="buttonLogout"><i class="material-icons">power_settings_new</i>Sair</a></li>
 		</ul>
 		<div class="navbar-fixed">
 			<nav>
-          <div class="nav-wrapper blue lighten-3">
+          <div class="nav-wrapper blue lighten-3" id="inicio">
             <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
             <a href="#" class="brand-logo">Estoque</a>
           </div>
@@ -39,16 +39,8 @@
       </div>
       <div class="container">
         <br>
-        <ul class="collection">
-          <a href="produto.html">
-            <li class="collection-item avatar" href="principal.html">
-              <i class="material-icons circle">folder</i>
-              <span class="title">Title</span>
-              <p>Quantidade
-              </p>
-            </li>
-          </a>
-        </ul>
+		<div class="row" id="produto">
+		</div>
         <div class="fixed-action-btn">
           <a class="btn-floating btn-large red" href="novoprod.html">
             <i class="large material-icons">add</i>
@@ -64,5 +56,6 @@
 	</script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 	<script type="text/javascript" src="js/bancodadosPrincipal.js"></script>
+	<script type="text/javascript" src="js/bancoEstoque.js"></script>
 	</body>
 </html>
