@@ -39,29 +39,49 @@
       </div>
       <div class="container">
         <br>
-        <div class="row">
+        <div class="row" id="albuns">
           <div class="col s12 m7">
-            <div class="card">
+            <div class="card album">
               <div class="card-image">
                 <img src="img/paisagem.jpg">
                 <span class="card-title">Fotos com o papai</span>
               </div>
               <div class="card-action">
-                <a>Entrar</a>
+                <a href="album.html">Entrar</a>
                 <a class="btn-floating green activator waves-effect waves-light btn"><i class="material-icons">mode_edit</i></a>
                 <a class="btn-floating blue waves-effect waves-light"><i class="material-icons">delete</i></a>
               </div>
               <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                <span class="card-title grey-text text-darken-4">Editar Albúm<i class="material-icons right">close</i></span>
+                <form>
+                  <div class="input-field">
+                    <input class="validate" type="text" id="nomeAlbumNovo">
+                    <label for="nomeAlbum">Novo nome</label>
+                  </div>
+                  <input type="submit" class="editar btn green waves-effect waves-light btn" value="Salvar">
+                </form>
               </div>
             </div>
           </div>
         </div>
         <div class="fixed-action-btn">
-          <a class="btn-floating btn-large red waves-effect waves-light">
+          <a class="btn-floating modal-trigger btn-large red waves-effect waves-light" href="#modal1">
             <i class="large material-icons">add</i>
           </a>
+        </div>
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4>Criar Albúm</h4>
+            <form>
+                  <div class="input-field">
+                    <input id="nomeAlbum" class="validate" type="text">
+                    <label for="nomeAlbum">Nome do Albúm</label>
+                  </div>
+            </form>
+            <div>
+              <a id="criar" class="btn green waves-effect waves-light btn">Salvar</a>
+            </div>
+          </div>
         </div>
       </div>
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -70,6 +90,12 @@
           $(".button-collapse").sideNav();
           $('.collapsible').collapsible();
         })
+
+        $(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+          
 	</script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 	<script type="text/javascript" src="js/bancodadosPrincipal.js"></script>
