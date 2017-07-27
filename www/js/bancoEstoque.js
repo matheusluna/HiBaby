@@ -19,10 +19,23 @@
 					const db2 = firebase.database().ref('user/'+ snap.key + '/');
 					const db3 = db2.child('Estoque');
 					
+					
 					db3.on('child_added', snap2 => {
 						
-						produto.innerHTML += "<ul class='collection'>" + "<a href='produto.html'>" + "<li class='collection-item avatar' href='principal.html'>" + "<i class='material-icons circle'>folder</i>" + "<span class='title'>" + snap2.val().nome + "</span>" + "<p>" + snap2.val().quantidade + "</p>" + "</li>" + "</a>" + "</ul>";
+						produto.innerHTML += "<ul class='collection' onclick=escolhido('" + snap2.val().nome + "')>" + "<a href='produto.html'>" + "<li class='collection-item avatar' href='principal.html'>" + "<i class='material-icons circle'>folder</i>" + "<span class='title' id='titulo'>" + snap2.val().nome + "</span>" + "<p>" + snap2.val().quantidade + "</p>" + "</li>" + "</a>" + "</ul>";
 						
+						
+					});
+					
+					db3.on('child_changed', snap2 => {
+						
+						produto.innerHTML += "<ul class='collection' onclick=escolhido('" + snap2.val().nome + "')>" + "<a href='produto.html'>" + "<li class='collection-item avatar' href='principal.html'>" + "<i class='material-icons circle'>folder</i>" + "<span class='title' id='titulo'>" + snap2.val().nome + "</span>" + "<p>" + snap2.val().quantidade + "</p>" + "</li>" + "</a>" + "</ul>";
+					});
+					
+					//verifica remoçao de dados no firebase e atualiza para a pagina.
+					db3.on('child_removed', snap2 => {
+						
+						produto.innerHTML += "<ul class='collection' onclick=escolhido('" + snap2.val().nome + "')>" + "<a href='produto.html'>" + "<li class='collection-item avatar' href='principal.html'>" + "<i class='material-icons circle'>folder</i>" + "<span class='title' id='titulo'>" + snap2.val().nome + "</span>" + "<p>" + snap2.val().quantidade + "</p>" + "</li>" + "</a>" + "</ul>";
 					});
 					
 				}else{
@@ -33,5 +46,20 @@
 		}else{
 		}
 	});
-	
+
 }());
+
+function escolhido(titulo) {
+		//let lista = ul;
+		localStorage.setObject("produto", []);
+		//const titulo = ul.getAttribute("titulo")
+		
+		//console.log(titulo);
+		//console.log(titulo.value);
+		
+		var array = localStorage.getObject("produto");
+		array.push(titulo);
+		localStorage.setObject("produto", array);
+		
+		console.log(array);
+	}
