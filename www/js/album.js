@@ -24,3 +24,8 @@ for (var i = dbRefList.length - 1; i >= 0; i--) {
               </div>
             </div>');
 };
+criar.onclick = function(){
+	const nome = document.getElementById("nomeAlbum").value;
+	const dbRefList = dbRefObjec.child('user/'+user.uid+'/albuns');
+	dbRefList.Patch(nome)
+}
