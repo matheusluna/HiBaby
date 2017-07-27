@@ -21,7 +21,14 @@
 	const novoEmail = document.getElementById('email');
 	const novoPass = document.getElementById('password');
 	const novoName = document.getElementById('first_name');
+	const filebutton = document.getElementById('arquivo');
+	var file;
 	
+	filebutton.addEventListener('change', function(e){
+		
+		file = e.target.files[0];
+		
+	});
 	
 	const auth = firebase.auth();
 	
@@ -34,9 +41,12 @@
 				name : novoName.value,
 				email : novoEmail.value,
 				pass : novoPass.value,
-				cor : cor,
-				img : "img"
+				cor : cor
 			});
+			
+			var storageRef = firebase.storage().ref('icon/' + novoName.value + '/' + novoName.value);
+			
+			storageRef.put(file);
 			
 			alert("Cadastro feito com sucesso!")
 		}, function(error) {
@@ -48,4 +58,5 @@
 			}
 		});
 	});
+	
 }());

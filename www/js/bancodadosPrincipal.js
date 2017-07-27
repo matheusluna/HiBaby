@@ -16,7 +16,6 @@
 	// A funçao para deslogar o usuario do firebase. com o evento de click e a funcao signOut.
 	btnLogout.addEventListener('click', e => {
 		
-		localStorage.setObject("email", null);
 		firebase.auth().signOut();
 		//O usuario e mandado para a pagina inicial.
 		window.location.replace("index.html");
@@ -43,9 +42,22 @@
 				//para saber qual usuario pegar.
 				if(firebaseUser.email == snap.val().email){
 					
+					// Create a reference with an initial file path and name
+					var storage = firebase.storage();
+					var pathReference = storage.ref('icon/' + snap.val().name + '/');
+					
+					pathReference.child(''+ snap.val().name + '').getDownloadURL().then(function(url) {
+					// `url` is the download URL for 'images/stars.jpg'
+					
+					// Or inserted into an <img> element:
+					img.src = url;
+					}).catch(function(error) {
+						// Handle any errors
+					});
+					
 					document.getElementById("name").innerHTML = snap.val().name;
 					document.getElementById("email").innerHTML = snap.val().email;
-					document.getElementById("img").src = snap.val().img;
+					document.getElementById("img").src = img.src;
 					
 					var cor = snap.val().cor;
 					
@@ -62,11 +74,23 @@
 			//verifica mudanças no firebase e atualiza para a pagina.
 			dbRefList.on('child_changed', snap => {
 				
+				// Create a reference with an initial file path and name
+				var storage = firebase.storage();
+				var pathReference = storage.ref('icon/' + snap.val().name + '/');
+				
+				pathReference.child(''+ snap.val().name + '').getDownloadURL().then(function(url) {
+				// `url` is the download URL for 'images/stars.jpg'
+				
+				// Or inserted into an <img> element:
+				img.src = url;
+				}).catch(function(error) {
+					// Handle any errors
+				});
 				
 				if(firebaseUser.email == snap.val().email){
 					document.getElementById("name").innerHTML = snap.val().name;
 					document.getElementById("email").innerHTML = snap.val().email;
-					document.getElementById("img").src = snap.val().img;
+					document.getElementById("img").src = img.src;
 				}else{
 					alert("Dados incorretos!")
 				}
@@ -75,10 +99,23 @@
 			//verifica remoçao de dados no firebase e atualiza para a pagina.
 			dbRefList.on('child_removed', snap => {
 				
+				// Create a reference with an initial file path and name
+				var storage = firebase.storage();
+				var pathReference = storage.ref('icon/' + snap.val().name + '/');
+				
+				pathReference.child(''+ snap.val().name + '').getDownloadURL().then(function(url) {
+				// `url` is the download URL for 'images/stars.jpg'
+				
+				// Or inserted into an <img> element:
+				img.src = url;
+				}).catch(function(error) {
+					// Handle any errors
+				});
+				
 				if(firebaseUser.email == snap.val().email){
 					document.getElementById("name").innerHTML = snap.val().name;
 					document.getElementById("email").innerHTML = snap.val().email;
-					document.getElementById("img").src = snap.val().img;
+					document.getElementById("img").src = img.src;
 				}
 			});
 		}else{
