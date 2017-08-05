@@ -81,6 +81,14 @@
 				pathReference.child(''+ snap.val().name + '').getDownloadURL().then(function(url) {
 				// `url` is the download URL for 'images/stars.jpg'
 				
+				// This can be downloaded directly:
+				var xhr = new XMLHttpRequest();
+				xhr.responseType = 'blob';
+				xhr.onload = function(event) {
+					var blob = xhr.response;
+				};
+				xhr.open('GET', url);
+				xhr.send();
 				// Or inserted into an <img> element:
 				img.src = url;
 				}).catch(function(error) {

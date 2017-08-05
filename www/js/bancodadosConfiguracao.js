@@ -1,5 +1,14 @@
 (function(){
 	
+	const filebutton = document.getElementById('arquivo');
+	var file;
+	
+	filebutton.addEventListener('change', function(arquivo){
+		
+		file = arquivo.target.files[0];
+		
+	});
+	
 	var cor;
 	//Salvo a cor que o usuario escolheu.
 	blue.addEventListener('click' , ee =>{
@@ -8,6 +17,7 @@
 	pink.addEventListener('click' , ez => {
 		cor = "pink";
 	});
+	
 	
 	//metodo para atualizar os dados.
 	btnNovo.addEventListener('click' , e => {
@@ -28,8 +38,8 @@
 				const dbRefObjec = firebase.database().ref();
 				const dbRefList = dbRefObjec.child('user');
 				
-				const user = firebaseUser;
-				
+				var user = firebaseUser;
+				if((file) && (cor) && (novoName.value)){
 				//Sync list changes.metodo de recuperar os dados do usuario.
 				dbRefList.on('child_added', snap => {
 					
@@ -47,8 +57,7 @@
 									name : novoName.value,
 									email : novoEmail.value,
 									pass : novoPass.value,
-									cor : cor,
-									img : snap.val().img
+									cor : cor
 								}
 								
 								var updates = {};
@@ -57,10 +66,30 @@
 								
 								//metodo para atualizar os dados.
 								firebase.database().ref().update(updates);
+								
+								
+								
+								var storageRef1 = firebase.storage().ref('icon/');
+								// Create a reference to the file to delete
+								var desertRef = storageRef1.child(snap.val().nome + '/' + snap.val().nome);
+								
+								// Delete the file
+								desertRef.delete().then(function() {
+									// File deleted successfully
+								}).catch(function(error) {
+									// Uh-oh, an error occurred!
+								});
+								
+								//Cria uma referencia no storage do firabase.
+								var storageRef = firebase.storage().ref('icon/' + novoName.value + '/' + novoName.value);
+								//Ele adiciona a foto na referencia criada no firabase storage.
+								storageRef.put(file);
+								/*
 								//metodo para o usuario deslogar.
 								firebase.auth().signOut();
 								//redireciono para a pagina inicial para fazer o login novamente com a novo email e senha.
 								window.location.replace("index.html");
+								*/
 							}, function(error) {
 								if(document.getElementById("passC").value == ""){
 									alert("Preencha as campos vazios!")
@@ -77,10 +106,14 @@
 									alert("Dados incorretos")
 							}
 						});
+					}else{
+						
 					}
 					
 				});
-				
+				}else{
+					console.log("erro");
+				}
 			}else{
 				
 			}

@@ -18,9 +18,15 @@
 	// Funçao de login. quando ele de um click no butao login vai ativar essa funçao, que serve para logar ele no firebase.
 	btnSignIn.addEventListener('click', e => {
 		
-		// Pego os valores de email e pass, e o auth diz todos os metodos de autenticaçao do firebase.
+		// Pego os valores de email e pass.
 		const email = Email.value;
 		const pass = Password.value;
+		
+		var confirma = logar(email,pass);
+	});
+	
+	function logar(email,pass){
+		
 		const auth = firebase.auth();
 		
 		//o metodo signInWithEmailAndPassword serve para fazer o login no firebase.
@@ -33,8 +39,7 @@
 			}
 			// ...
 		});
-		
-	});
+	}
 	
 	// Add a realtime listener. Esse metodo onAuthStateChanged e para saber em tempo real si o usuario esta logado ou nao.
 	firebase.auth().onAuthStateChanged(firebaseUser =>{

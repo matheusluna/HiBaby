@@ -27,7 +27,7 @@
 			<li><a class="waves-effect" href="eventos.html"><i class="material-icons">today</i>Eventos</a></li>
 			<li><a class="waves-effect" href="configuracoes.html"><i class="material-icons">settings</i>Configurações</a></li>
 			<li><a class="waves-effect" href="estoque.html"><i class="material-icons">shopping_cart</i>Estoque</a></li>
-			<li><a class="waves-effect" id="buttonLogout"><i class="material-icons">power_settings_new</i>Logout</a></li>
+			<li><a class="waves-effect" id="buttonLogout"><i class="material-icons">power_settings_new</i>Sair</a></li>
 		</ul>
 		<div class="navbar-fixed">
 			<nav>
@@ -54,13 +54,22 @@
 			<div class="row">
 				<div class="input-field col s12">
 					<input id="passC" type="password" class="validate">
-					<label for="password">Password</label>
+					<label for="password">Senha</label>
 				</div>
 			</div>
 			<div class="row">
 				<h5>Cor do aplicativo</h5>
 				<a class="btn-floating btn-large waves-effect blue lighten-3" id="blue"></a>
 				<a class="btn-floating btn-large waves-effect pink lighten-3" id="pink"></a>
+			</div>
+			<div class="file-field input-field">
+				<div class="btn">
+					<span>Foto de perfil</span>
+					<input type="file" multiple id="arquivo">
+				</div>
+				<div class="file-path-wrapper">
+					<input class="file-path validate" type="text" placeholder="Upload one or more files">
+				</div>
 			</div>
 			<div class="fixed-action-btn">
 				<a class="btn-floating btn-large red" id="btnNovo">
@@ -77,6 +86,6 @@
 	</script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 	<script type="text/javascript" src="js/bancodadosPrincipal.js"></script>
-	<script type="text/javascript" src="js/bancodadosConfiguraçao.js"></script>
+	<script type="text/javascript" src="js/bancodadosConfiguracao.js"></script>
 	</body>
 </html>
