@@ -10,16 +10,16 @@
 		//Sync list changes.metodo de recuperar os dados do usuario.
 		dbRefList.on('child_added', snap => {
 			
-			const retirada = document.getElementById('last_name');
+			const atribuir = document.getElementById('last_name');
 			var array = localStorage.getObject("produto");
 			
 			if(snap.val().nome == array[0]){
-				
-				if((snap.val().quantidade - parseInt(retirada.value)) >= 0){
+			
+				if((parseInt(atribuir.value)) >= 0){
 					
 					const novo = {
 						nome : snap.val().nome,
-						quantidade : snap.val().quantidade - parseInt(retirada.value)
+						quantidade : snap.val().quantidade + parseInt(atribuir.value)
 					}
 					
 					var updates = {};
@@ -36,6 +36,6 @@
 			}
 			
 		});
+		
 	});
-	
 }());

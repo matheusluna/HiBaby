@@ -71,14 +71,7 @@
 								
 								var storageRef1 = firebase.storage().ref('icon/');
 								// Create a reference to the file to delete
-								var desertRef = storageRef1.child(snap.val().nome + '/' + snap.val().nome);
-								
-								// Delete the file
-								desertRef.delete().then(function() {
-									// File deleted successfully
-								}).catch(function(error) {
-									// Uh-oh, an error occurred!
-								});
+								storageRef1.child(snap.val().nome + '/' + snap.val().nome + '.jpg').delete();
 								
 								//Cria uma referencia no storage do firabase.
 								var storageRef = firebase.storage().ref('icon/' + novoName.value + '/' + novoName.value);
