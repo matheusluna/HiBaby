@@ -4,6 +4,8 @@
 	const dbRefObjec = firebase.database().ref();
 	const dbRefList = dbRefObjec.child('estoque');
 	
+	localStorage.setObject("estoque", []);
+	
 	//Sync list changes.metodo de recuperar os dados do usuario.
 	dbRefList.on('child_added', snap => {
 		
@@ -23,6 +25,8 @@
 									"</a>" +
 								"</li>" + 
 							"</ul>";
+							
+		adde(snap.val().nome);
 	});
 	
 	dbRefList.on('child_changed', snap => {
@@ -45,6 +49,7 @@
 							"</ul>";
 	});
 	
+	
 	//verifica remoçao de dados no firebase e atualiza para a pagina.
 	dbRefList.on('child_removed', snap => {
 		
@@ -64,9 +69,20 @@
 									"</a>" +
 								"</li>" + 
 							"</ul>";
+							
+		
 	});
 
 }());
+
+function adde(nome){
+	
+	var array = localStorage.getObject("estoque");
+	array.push(nome);
+	console.log(nome);
+	localStorage.setObject("estoque", array);
+	
+}
 
 function escolhido(titulo) {
 		localStorage.setObject("produto", []);
@@ -81,7 +97,6 @@ function remove(nome){
 	//Create references. referencia do bando de dados do firebase.
 	const dbRefObjec = firebase.database().ref();
 	const dbRefList1 = dbRefObjec.child('estoque');
-	console.log(nome);
 	//Sync list changes.metodo de recuperar os dados do usuario.
 	dbRefList1.on('child_added', snap => {
 		

@@ -4,6 +4,8 @@
 	const dbRefObjec = firebase.database().ref();
 	const dbRefList = dbRefObjec.child('albuns');
 	
+	localStorage.setObject("albuns", []);
+	
 	//Sync list changes.metodo de recuperar os dados do usuario.
 	dbRefList.on('child_added', snap => {
 		
@@ -32,7 +34,7 @@
 						"</form>" +
 					"</div>" +
 					"</div>";
-		
+		adde(snap.val().nome);
 	});
 	
 	dbRefList.on('child_changed', snap => {
@@ -102,9 +104,20 @@
 		const dbRefObjec = firebase.database().ref();
 		const dbRefList = dbRefObjec.child('albuns');
 		
+		var array = localStorage.getObject("albuns");
+		var confimar = false;
+		
+		for(var i=0; i<array.length; i++){
+			if(nome == array[i]){
+				confimar = true;
+			}
+		}
 		
 		if (nome == ""){
 			alert("Dado vazio")
+		}else if(confimar == true){
+			
+			alert("Ja exite esse album");
 		}else{
 			
 			dbRefList.once('value', s =>{
@@ -112,21 +125,14 @@
 				
 				if(a === true){
 					
-				}else{
-					
 					// adicionar primeira vez. nao tem esse produto no banco.
 					firebase.database().ref('albuns/').push({
 						nome: nome
 					});
-				}
-			});
-			
-			//Sync list changes.metodo de recuperar os dados do usuario.
-			dbRefList.on('child_added', snap => {
-				
-				if(nome == snap.val().nome){
+					
 				}else{
-					// adicionar direto. nao tem esse produto no banco.
+					
+					// adicionar primeira vez. nao tem esse produto no banco.
 					firebase.database().ref('albuns/').push({
 						nome: nome
 					});
@@ -138,3 +144,11 @@
 	});
 	
 }());
+
+function adde(nome){
+	
+	var array = localStorage.getObject("albuns");
+	array.push(nome);
+	localStorage.setObject("albuns", array);
+	
+}

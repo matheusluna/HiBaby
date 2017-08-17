@@ -11,18 +11,34 @@
 		const dbRefObjec = firebase.database().ref();
 		const dbRefList = dbRefObjec.child('estoque');
 		
+		var array = localStorage.getObject("estoque");
+		var confimar = false;
+		
+		for(var i=0; i<array.length; i++){
+			if(nome.value == array[i]){
+				confimar = true;
+			}
+		}
 		
 		if(parseInt(quantidade.value) < 0){
 			alert("ERRO!Valor negativo")
-		}
-		if (nome.value == "" || quantidade.value == ""){
+		}else if (nome.value == "" || quantidade.value == ""){
 			alert("Dados vazios")
-		}else{
+		}else if(confimar == true){
 			
+			alert("Ja exite esse produto");
+		}else{
 			dbRefList.once('value', s =>{
 				var a = s.exists();
-				
+					
 				if(a === true){
+					
+					// adicionar primeira vez. nao tem esse produto no banco.
+					firebase.database().ref('estoque/').push({
+						nome: nome.value,
+						quantidade: parseInt(quantidade.value)
+					});
+					window.location.replace("estoque.html");
 					
 				}else{
 					
@@ -35,23 +51,26 @@
 				}
 			});
 			
-			//Sync list changes.metodo de recuperar os dados do usuario.
-			dbRefList.on('child_added', snap => {
-				
-				if(nome.value == snap.val().nome){
-					window.location.replace("principal.html");
-				}else{
-					// adicionar direto. nao tem esse produto no banco.
-					firebase.database().ref('estoque/').push({
-						nome: nome.value,
-						quantidade: parseInt(quantidade.value)
-					});
-					window.location.replace("estoque.html");
-				}
-			});
+		}
+		/*
+		var confimar = false;
+		for(var a= 0; a< vetor.length; a++){
 			
+			if(nome.value == vetor[a]){
+				confirma = true;
+			}
 		}
 		
+		if(confimar != true){
+			// adicionar direto. nao tem esse produto no banco.
+			firebase.database().ref('estoque/').push({
+				nome: nome.value,
+				quantidade: parseInt(quantidade.value)
+			});
+			window.location.replace("estoque.html");
+			
+		}
+		*/
 	});
 	
 }());
