@@ -1,12 +1,13 @@
 (function(){
-	
-	btFoto.onclick = function (argument) {
-		// body...
-		navigator.camera.getPicture(onSuccess, onFail, {
-		quality: 100,
-		destinationType: Camera.DestinationType.DATA_URL
-	})};
-	
+	var url   = window.location.href;
+	var titulo = url.split("?")[1];
+	var titulo1 = titulo.split("&")[0];
+	var idAlbum = titulo.split("&")[1].split("=")[1];
+	var titulo2 = titulo1.split("=")[1];
+	document.getElementById("titulo").innerHTML = titulo2;
+	//Função que adciona uma url de imagem ao banco de dados e adciona na pagina html
+	//Recebe uma url
+	//retorna true
 	function onSuccess(imageData) {
 		
 		//Create references. referencia do bando de dados do firebase.
@@ -44,9 +45,20 @@
 				
 			}
 		});
+		return true;
 	}
-	
+	//função que se falhar imprime a mensagem de erro
+	//recebe uma mensagem de erro
+	//retorna false
 	function onFail(message) {
 		alert('Failed because: ' + message);
+		return false;
 	}
+	//função que chama a camera do dispositivo e se conseguir capturar a foto, chama a função onSucess se falhar chama a função onFail
+	btFoto.onclick = function () {
+		// body...
+		navigator.camera.getPicture(onSuccess, onFail, {
+		quality: 100,
+		destinationType: Camera.DestinationType.DATA_URL
+	})};
 }());
