@@ -1,4 +1,14 @@
 (function(){
+
+	var config = {
+		apiKey: "AIzaSyDTgFfL8QZU6kA1q9Jc9I4Lu24CuaQiJEs",
+		authDomain: "hibaby-1bebf.firebaseapp.com",
+		databaseURL: "https://hibaby-1bebf.firebaseio.com",
+		projectId: "hibaby-1bebf",
+		storageBucket: "hibaby-1bebf.appspot.com",
+		messagingSenderId: "9227781946"
+	};
+	firebase.initializeApp(config);
 	
 	//Create references. referencia do bando de dados do firebase.
 	const dbRefObjec = firebase.database().ref();
