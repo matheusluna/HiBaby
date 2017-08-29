@@ -55,6 +55,7 @@
 						// Handle any errors
 					});
 					
+					
 					document.getElementById("name").innerHTML = snap.val().name;
 					document.getElementById("email").innerHTML = snap.val().email;
 					document.getElementById("img").src = img.src;
