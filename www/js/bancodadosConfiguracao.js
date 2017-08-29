@@ -1,5 +1,4 @@
-(function(){
-	
+
 	const filebutton = document.getElementById('arquivo');
 	var file;
 	
@@ -18,21 +17,27 @@
 		cor = "pink";
 	});
 	
+	//Get elements
+	const novoEmail = document.getElementById('emailC');
+	const novoPass = document.getElementById('passC'); 
+	const novoName = document.getElementById('nameC');
+	
 	
 	//metodo para atualizar os dados.
 	btnNovo.addEventListener('click' , e => {
+		
+		var confirma = configurar(file, cor , novoEmail, novoPass, novoName);
+		
+	});
+	
+	
+	function configurar(file, cor , novoEmail, novoPass, novoName){
 		
 		// Add a realtime listener. Esse metodo onAuthStateChanged e para saber em tempo real si o usuario esta logado ou nao.
 		firebase.auth().onAuthStateChanged(firebaseUser =>{
 			
 			//verifico si tem usuario on.
 			if(firebaseUser){
-				
-				//Get elements
-				const novoEmail = document.getElementById('emailC');
-				const novoPass = document.getElementById('passC'); 
-				const novoName = document.getElementById('nameC');
-				
 				
 				//Create references
 				const dbRefObjec = firebase.database().ref();
@@ -83,11 +88,14 @@
 								//redireciono para a pagina inicial para fazer o login novamente com a novo email e senha.
 								window.location.replace("index.html");
 								*/
+								return true;
 							}, function(error) {
 								if(document.getElementById("passC").value == ""){
 									alert("Preencha as campos vazios!")
+									return false;
 								}else{
 									alert("Dados incorretos")
+									return false;
 								}
 								
 							});
@@ -95,22 +103,23 @@
 							// An error happened.
 							if(document.getElementById("emailC").value == "" || document.getElementById("passC").value == "" ){
 									alert("Preencha as campos vazios!")
+									return false;
 							}else{
 									alert("Dados incorretos")
+									return false;
 							}
 						});
 					}else{
-						
+						return false;
 					}
 					
 				});
 				}else{
-					console.log("erro");
+					return false;
 				}
 			}else{
-				
+				return false;
 			}
 			
 		});
-	});
-}());
+	}

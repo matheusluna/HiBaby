@@ -1,4 +1,4 @@
-(function(){
+
 	// Initialize Firebase
 	var config = {
 		apiKey: "AIzaSyDTgFfL8QZU6kA1q9Jc9I4Lu24CuaQiJEs",
@@ -31,15 +31,9 @@
 		
 	});
 	
-	const auth = firebase.auth();
-	
 	btnNovo.addEventListener('click' , e => {
 		
 		var confirma = cadastra(file,cor,novoName.value, novoEmail.value, novoPass.value);
-		
-		if(confima){
-			window.location.replace("index.html");
-		}
 		
 	});
 	
@@ -48,7 +42,7 @@
 		//Para testar si o usuario clicou na cor e adicinou o arquivo.
 		if((file) && (cor) && (novoName)){
 			//Cria o usuario no firebase no autenticar.
-			auth.createUserWithEmailAndPassword(novoEmail, novoPass).then(function(){
+			firebase.auth().createUserWithEmailAndPassword(novoEmail, novoPass).then(function(){
 				// Update successful.
 				//Cria o usuario no firebase no database.
 				firebase.database().ref('user/').push({
@@ -81,5 +75,3 @@
 			return false;
 		}
 	}
-	
-}());
